@@ -1,5 +1,6 @@
 # MYSQLの型まとめ
 
+## INT
 ```
 TINYINT         -128                  ~127
 SMALLINT        -32768                ~32767
@@ -12,6 +13,7 @@ UNSIGNED...符号なし
 ZEROFILL...桁数分0で埋める
 ```
 
+## FLOAT
 ```
 FLOAT  -3.402823466E+38 ~ -1.175494351E-38
 DOUBLE -1.7976931348623157E+308 ~ -2.2250738585072014E-308
@@ -21,12 +23,11 @@ UNSIGNED...符号なし
 ZEROFILL...桁数分0で埋める
 ```
 
+## 文字列系
 ```
 CHAR    固定長文字列 0~255
 VARCHAR 可変長文字列 0~65535 ※ 使用する文字コードによってはバイト数になる
-```
 
-```
 BLOB バイナリデータを扱う (TINYBLOB, BLOB, MEDIUMTEXT, LONGBLOBがある)
 TEXT 文字列データを扱う (TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXTがある)
 ```
@@ -59,7 +60,7 @@ user テーブル
 +------------+---------------------+------+-----+---------+----------------+
 ```
 
-### テーブル作成SQL
+## テーブル作成 CREATE TABLE
 
 ```
 CREATE TABLE table_name (
@@ -73,10 +74,11 @@ CREATE TABLE table_name (
 )
 
 ※ 最終行に `,` があるとエラーが起きる
+```
 
+#### 実際の作成例
 
-実際の作成例
-
+```
 CREATE TABLE entry (
     id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
     author_id BIGINT UNSIGNED NOT NULL,
@@ -93,4 +95,22 @@ CREATE TABLE user (
     password VARCHAR(40),
     created_at DATETIME NOT NULL
 ) Engine=InnoDB DEFAULT CHARSET=utf8mb4;
+```
+
+## テーブルの構造を変更 ALTER TABLE
+```
+# フィールド追加/削除
+ALTER TABLE テーブル名 ADD/DROP フィールド名 型
+
+# フィールドの変更
+ALTER TABLE テーブル名 CHANGE フィールド名 新しいフィールド名 型
+
+# 型のみを変更
+ALTER TABLE テーブル名 MODIFY フィールド名 型
+
+# フィールド名の変更
+ALTER TABLE テーブル名 RENAME フィールド名 TO 新しいフィールド名
+
+# インデックスの追加/削除
+ALTER TABLE テーブル名 ADD/DROP インデックスの名前(インデックスを貼るカラム)
 ```
