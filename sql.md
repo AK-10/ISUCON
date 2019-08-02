@@ -35,8 +35,8 @@ TEXT 文字列データを扱う (TINYTEXT, TEXT, MEDIUMTEXT, LONGTEXTがある)
 # 構文まとめ
 
 ISUCON6のテーブルより例を示す
-```
-entry テーブル
+```sql
+# entry テーブル
 +-------------+---------------------+------+-----+---------+----------------+
 | Field       | Type                | Null | Key | Default | Extra          |
 +-------------+---------------------+------+-----+---------+----------------+
@@ -48,7 +48,7 @@ entry テーブル
 | created_at  | datetime            | NO   |     | NULL    |                |
 +-------------+---------------------+------+-----+---------+----------------+
 
-user テーブル
+# user テーブル
 +------------+---------------------+------+-----+---------+----------------+
 | Field      | Type                | Null | Key | Default | Extra          |
 +------------+---------------------+------+-----+---------+----------------+
@@ -78,7 +78,7 @@ CREATE TABLE table_name (
 
 #### 実際の作成例
 
-```
+```sql
 CREATE TABLE entry (
     id BIGINT UNSIGNED AUTO_INCREMENT NOT NULL PRIMARY KEY,
     author_id BIGINT UNSIGNED NOT NULL,
@@ -98,7 +98,7 @@ CREATE TABLE user (
 ```
 
 ## テーブルの構造を変更 ALTER TABLE
-```
+```sql
 # フィールド追加/削除
 ALTER TABLE テーブル名 ADD/DROP フィールド名 型
 
