@@ -98,6 +98,7 @@ CREATE TABLE user (
 ```
 
 ## テーブルの構造を変更 ALTER TABLE
+
 ```sql
 # フィールド追加/削除
 ALTER TABLE テーブル名 ADD/DROP フィールド名 型
@@ -113,4 +114,18 @@ ALTER TABLE テーブル名 RENAME フィールド名 TO 新しいフィール�
 
 # インデックスの追加/削除
 ALTER TABLE テーブル名 ADD/DROP インデックスの名前(インデックスを貼るカラム)
+```
+
+## 内部結合 INNER JOIN
+
+```sql
+SELECT * FROM テーブル1 INNER JOIN テーブル2 ON 結合条件 WHERE ...
+```
+
+### INDEX
+
+```
+IS NULLについては、INDEXが効いている
+その他インデックスについての参考記事
+https://qiita.com/NagaokaKenichi/items/44cabcafa3d02d9cd896
 ```
