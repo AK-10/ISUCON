@@ -1,9 +1,8 @@
 package main
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
-	"log"
 	"os"
 	"strconv"
 
@@ -30,7 +29,7 @@ func getDataFromCache(key string) ([]byte, error) {
 	return data, nil
 }
 
-func makeUserKey(id int64) string {
+func makeKey(id int64) string {
 	ID := strconv.Itoa(int(id))
 	return Key + ID
 }
