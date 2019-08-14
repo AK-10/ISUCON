@@ -2,6 +2,13 @@
 
 `"github.com/gomodule/redigo/redis"`
 
+### HOW TO USE THIS template
+
+```
+env.shにredisに接続できる情報を記載
+source env.sh # 環境変数
+```
+
 ### ubuntu redis install
 
 参考記事
