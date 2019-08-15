@@ -1,7 +1,7 @@
 package main
 
 import (
-	// "encoding/json"
+	"encoding/json"
 	"fmt"
 	"os"
 	"strconv"
@@ -16,6 +16,15 @@ var (
 	key = "KEY"
 )
 
+func FLUSH_ALL() error {
+	conn, err := redis.Dial("tcp", fmt.Sprintf("%s:%s", redisHost, redisPort))
+	if err != nil {
+		return err
+	}
+	conn.Do("FLUSHALL")
+	return nil
+}
+
 func getDataFromCache(key string) ([]byte, error) {
 	conn, err := redis.Dial("tcp", fmt.Sprintf("%s:%s", redisHost, redisPort))
 	if err != nil {
@@ -27,6 +36,18 @@ func getDataFromCache(key string) ([]byte, error) {
 		return nil, err
 	}
 	return data, nil
+}
+
+func setDataToCache(key string, data []byte) error {
+	conn, err := redis.Dial("tcp", fmt.Sprintf("%s:%s", redisHost, redisPort))
+	if err != nil {
+		return err
+	}
+	err = conn.Do("SET", key, data)
+	if err != nil {
+		return err
+	}
+	return nil
 }
 
 func makeKey(id int64) string {
