@@ -17,6 +17,7 @@ var (
 	key = "KEY"
 )
 
+// fieldが存在する場合更新
 func setHashDataToCache(key, field string, data []byte) error {
 	conn, err := redis.Dial("tcp", fmt.Sprintf("%s:%s", redisHost, redisPort))
 	if err != nil {
