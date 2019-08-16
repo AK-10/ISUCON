@@ -1,10 +1,11 @@
 package main
 
 import (
-	"encoding/json"
+	// "encoding/json"
 	"fmt"
 	"os"
-	"strconv"
+	// "strconv"
+	"strings"
 
 	"github.com/gomodule/redigo/redis"
 )
@@ -55,7 +56,7 @@ func setDataToCache(key string, data []byte) error {
 	if err != nil {
 		return err
 	}
-	err = conn.Do("SET", key, data)
+	_, err = conn.Do("SET", key, data)
 	if err != nil {
 		return err
 	}
