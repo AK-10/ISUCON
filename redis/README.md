@@ -22,3 +22,5 @@ source env.sh # 環境変数
 
 参考記事
 https://symfoware.blog.fc2.com/blog-entry-2175.html
+
+http://redis.shibu.jp/index.html
